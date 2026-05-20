@@ -47,8 +47,10 @@ export default function AdminCampeonatos() {
   }
 
   async function handleDelete(id: string) {
-    if (!confirm('¿Eliminar este campeonato? Esta acción no se puede deshacer.')) return
-    await supabase.from('championships').delete().eq('id', id)
+    if (!confirm('¿Eliminar este campeonato? Se eliminarán también todos sus eventos y resultados asociados. Esta acción no se puede deshacer.')) return
+    const { error } = await supabase.from('championships').delete().eq('id', id)
+    if (error) { setMsg('Error al eliminar: ' + error.message); return }
+    setMsg('Campeonato eliminado.')
     load()
   }
 
@@ -61,6 +63,8 @@ export default function AdminCampeonatos() {
           {showForm ? 'Cancelar' : '+ Nuevo campeonato'}
         </button>
       </div>
+
+      {msg && <div className={`mb-4 px-4 py-3 text-sm border ${msg.includes('Error') ? 'border-red-500/30 bg-red-500/10 text-red-400' : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'}`}>{msg}</div>}
 
       {showForm && (
         <div className="fsl-card p-6 mb-6">
