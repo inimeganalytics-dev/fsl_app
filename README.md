@@ -30,8 +30,6 @@ git push -u origin main
 ### 3. Variables de entorno en Vercel
 En la pantalla de configuración antes de deploy, agregar:
 ```
-NEXT_PUBLIC_SUPABASE_URL = https://pfjplocmvtsujzxtlzsz.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
 ### 4. Deploy
@@ -41,7 +39,7 @@ Click en **"Deploy"** — Vercel buildea y despliega automáticamente.
 1. Ir al dashboard de Supabase → **Authentication → Users**
 2. Click **"Add User"** 
 3. Ingresar tu email y contraseña
-4. ¡Listo! Podés loguearte en `tu-app.vercel.app/admin`
+4. ¡Listo! Podés loguearte en 
 
 ## URLs de la app
 
